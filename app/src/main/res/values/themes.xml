@@ -2,16 +2,25 @@
     <!-- Base application theme. -->
     <style name="Theme.RegisterHgt" parent="Theme.Material3.DayNight">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorPrimary">@color/material_dynamic_primary40</item>
+        <item name="colorPrimaryContainer">@color/material_dynamic_primary90</item>
+        <item name="colorOnPrimary">@color/material_dynamic_primary100</item>
+        <item name="colorOnPrimaryContainer">@color/material_dynamic_primary10</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/material_dynamic_secondary40</item>
+        <item name="colorSecondaryContainer">@color/material_dynamic_secondary90</item>
+        <item name="colorOnSecondary">@color/material_dynamic_secondary100</item>
+        <item name="colorOnSecondaryContainer">@color/material_dynamic_secondary10</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="actionBarTheme">@style/RegisterHgtAppBar</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="RegisterHgtAppBar" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/material_dynamic_primary40</item>
+    </style>
+
 
 </resources>

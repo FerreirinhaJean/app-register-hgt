@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RegisterHgt</string>
+    <string name="app_name">Registro de Glicemias</string>
     <string name="adicionar_registro">Adicionar registro</string>
     <string name="adicionar_registro_atual">Adicionar registro atual</string>
     <string name="glicemia_atual">Glicemia Atual</string>
