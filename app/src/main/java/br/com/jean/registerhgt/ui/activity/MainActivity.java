@@ -1,4 +1,4 @@
-package br.com.jean.registerhgt;
+package br.com.jean.registerhgt.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import br.com.jean.registerhgt.R;
 
 public class MainActivity extends AppCompatActivity {
 
