@@ -61,8 +61,9 @@ public class CurrentRegisterActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.menu_current_activity_salvar) {
             int value = Integer.parseInt(valorGlicemia.getEditText().getText().toString());
             Date date = new Date();
+            int type = tipoGlicemia.getSelectedItemPosition();
 
-            Register register = new Register(0, value, date, 1);
+            Register register = new Register(0, value, date, type);
             registerDao.addRegister(register);
             finish();
         }

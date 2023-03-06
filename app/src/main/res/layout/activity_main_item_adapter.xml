@@ -28,6 +28,15 @@
                 tools:text="Glicemia: 179 (mg/dL)" />
 
             <TextView
+                android:id="@+id/activity_main_item_adapter_tipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:textSize="18sp"
+                android:layout_marginStart="8dp"
+                tools:text="Antes do Almoço" />
+
+            <TextView
                 android:id="@+id/activity_main_item_adapter_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

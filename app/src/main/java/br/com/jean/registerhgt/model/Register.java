@@ -1,10 +1,13 @@
 package br.com.jean.registerhgt.model;
 
-import java.text.DateFormat;
+import android.content.res.Resources;
+
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.TimeZone;
+
+import br.com.jean.registerhgt.R;
 
 public class Register {
 
@@ -56,7 +59,7 @@ public class Register {
         return "Glicemia: " + this.value + " (mg/dL)";
     }
 
-    public String getForrmatedDate() {
+    public String getFormattedDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         sdf.setTimeZone(TimeZone.getTimeZone("America/Sao_Paulo"));
         return sdf.format(this.date);

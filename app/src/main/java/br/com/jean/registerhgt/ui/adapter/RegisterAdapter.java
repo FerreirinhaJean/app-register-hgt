@@ -1,6 +1,7 @@
 package br.com.jean.registerhgt.ui.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,8 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
         Register register = registers.get(position);
 
         holder.tvValorGlicemia.setText(register.getFormattedValue());
-        holder.tvDataGlicemia.setText(register.getForrmatedDate());
+        holder.tvDataGlicemia.setText(register.getFormattedDate());
+        holder.tvTipoGlicemia.setText(getFormattedType(register));
     }
 
     @Override
@@ -54,14 +56,21 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvValorGlicemia, tvDataGlicemia;
+        private TextView tvValorGlicemia, tvDataGlicemia, tvTipoGlicemia;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvValorGlicemia = itemView.findViewById(R.id.activity_main_item_adapter_valor_glicemia);
             tvDataGlicemia = itemView.findViewById(R.id.activity_main_item_adapter_data);
+            tvTipoGlicemia = itemView.findViewById(R.id.activity_main_item_adapter_tipo);
         }
+    }
+
+    private String getFormattedType(Register register) {
+        Resources resources = context.getResources();
+        String[] types = resources.getStringArray(R.array.list_type_register);
+        return types[register.getType()];
     }
 
 }
