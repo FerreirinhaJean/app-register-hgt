@@ -6,4 +6,6 @@
     <string name="glicemia_passada">Glicemia Passada</string>
     <string name="informe_o_valor_da_glicemia">Informe o valor da glicemia:</string>
     <string name="informe_o_tipo_de_glicemia">Informe o tipo de glicemia:</string>
+    <string name="salvar_registro">Salvar Registro</string>
+    <string name="salvar">Salvar</string>
 </resources>

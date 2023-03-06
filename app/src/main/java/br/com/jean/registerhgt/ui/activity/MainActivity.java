@@ -24,35 +24,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fabAddRegister = findViewById(R.id.activity_main_adicionar_registro);
-        fabNewRegister = findViewById(R.id.activity_main_adicionar_registro_atual);
-        fabOldRegister = findViewById(R.id.activity_main_adicionar_registro_passado);
-        tvNewRegister = findViewById(R.id.activity_main_adicionar_registro_atual_texto);
-        tvOldRegister = findViewById(R.id.activity_main_adicionar_registro_passado_texto);
+        createFindViewById();
 
         fabAddRegister.shrink();
         fabAddRegister.setOnClickListener(v -> {
             if (!hasClickeFab) {
-                fabAddRegister.extend();
-                fabNewRegister.show();
-                fabOldRegister.show();
-                tvNewRegister.setVisibility(View.VISIBLE);
-                tvOldRegister.setVisibility(View.VISIBLE);
-                hasClickeFab = true;
+                showExtendedFab();
             } else {
-                fabAddRegister.shrink();
-                fabNewRegister.hide();
-                fabOldRegister.hide();
-                tvNewRegister.setVisibility(View.GONE);
-                tvOldRegister.setVisibility(View.GONE);
-                hasClickeFab = false;
+                hideExtendedFab();
             }
         });
 
         fabNewRegister.setOnClickListener(v -> {
             Intent intent = new Intent(this, CurrentRegisterActivity.class);
             startActivity(intent);
+            hideExtendedFab();
         });
 
+    }
+
+    private void hideExtendedFab() {
+        fabAddRegister.shrink();
+        fabNewRegister.hide();
+        fabOldRegister.hide();
+        tvNewRegister.setVisibility(View.GONE);
+        tvOldRegister.setVisibility(View.GONE);
+        hasClickeFab = false;
+    }
+
+    private void showExtendedFab() {
+        fabAddRegister.extend();
+        fabNewRegister.show();
+        fabOldRegister.show();
+        tvNewRegister.setVisibility(View.VISIBLE);
+        tvOldRegister.setVisibility(View.VISIBLE);
+        hasClickeFab = true;
+    }
+
+    private void createFindViewById() {
+        fabAddRegister = findViewById(R.id.activity_main_adicionar_registro);
+        fabNewRegister = findViewById(R.id.activity_main_adicionar_registro_atual);
+        fabOldRegister = findViewById(R.id.activity_main_adicionar_registro_passado);
+        tvNewRegister = findViewById(R.id.activity_main_adicionar_registro_atual_texto);
+        tvOldRegister = findViewById(R.id.activity_main_adicionar_registro_passado_texto);
     }
 }
