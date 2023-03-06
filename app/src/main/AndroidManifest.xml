@@ -13,6 +13,13 @@
         android:theme="@style/Theme.RegisterHgt"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.OldRegisterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.activity.CurrentRegisterActivity"
             android:exported="false">
             <meta-data

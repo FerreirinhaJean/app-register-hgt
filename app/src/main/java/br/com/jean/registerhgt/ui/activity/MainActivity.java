@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             hideExtendedFab();
         });
+
+        fabOldRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(this, OldRegisterActivity.class);
+            startActivity(intent);
+            hideExtendedFab();
+        });
     }
 
     private void configListItemsAdapter() {
