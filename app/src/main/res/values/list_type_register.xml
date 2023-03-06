@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_type_register">
+        <item>Antes do Café da Manhã</item>
+        <item>Depois do Café da Manhã</item>
+        <item>Antes do Almoço</item>
+        <item>Depois do Almoço</item>
+        <item>Antes do Jantar</item>
+        <item>Depois do Jantar</item>
+        <item>Antes de Dormir / Deitar</item>
+        <item>Extra</item>
+    </string-array>
+
+</resources>

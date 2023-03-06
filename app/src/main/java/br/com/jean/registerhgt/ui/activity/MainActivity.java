@@ -2,6 +2,7 @@ package br.com.jean.registerhgt.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -46,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
                 tvOldRegister.setVisibility(View.GONE);
                 hasClickeFab = false;
             }
+        });
+
+        fabNewRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(this, CurrentRegisterActivity.class);
+            startActivity(intent);
         });
 
     }

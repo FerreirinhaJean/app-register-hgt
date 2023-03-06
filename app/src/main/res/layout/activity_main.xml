@@ -30,7 +30,7 @@
         android:focusable="true"
         android:src="@drawable/ic_new_register"
         android:visibility="gone"
-        app:fabSize="mini"
+        app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@id/activity_main_adicionar_registro"
         app:layout_constraintEnd_toEndOf="parent"
         tools:visibility="visible" />
@@ -39,14 +39,14 @@
         android:id="@+id/activity_main_adicionar_registro_atual_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/roboto"
         android:text="@string/glicemia_atual"
         android:textSize="16sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/guideline_registro_atual_bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_main_adicionar_registro_atual"
         app:layout_constraintEnd_toStartOf="@id/activity_main_adicionar_registro_atual"
-        app:layout_constraintTop_toBottomOf="@id/guideline_registro_atual_top"
+        app:layout_constraintTop_toTopOf="@+id/activity_main_adicionar_registro_atual"
         tools:visibility="visible" />
 
 
@@ -60,7 +60,7 @@
         android:focusable="true"
         android:src="@drawable/ic_register_later"
         android:visibility="gone"
-        app:fabSize="mini"
+        app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@id/activity_main_adicionar_registro_atual"
         app:layout_constraintEnd_toEndOf="parent"
         tools:visibility="visible" />
@@ -69,42 +69,14 @@
         android:id="@+id/activity_main_adicionar_registro_passado_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/roboto"
         android:text="@string/glicemia_passada"
         android:textSize="16sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/guideline_registro_passado_bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_main_adicionar_registro_passado"
         app:layout_constraintEnd_toStartOf="@id/activity_main_adicionar_registro_passado"
-        app:layout_constraintTop_toBottomOf="@id/guideline_registro_passado_top"
+        app:layout_constraintTop_toTopOf="@+id/activity_main_adicionar_registro_passado"
         tools:visibility="visible" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_registro_atual_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.879617" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_registro_atual_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.80300957" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_registro_passado_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7045144" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_registro_passado_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.78112173" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

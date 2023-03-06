@@ -4,4 +4,6 @@
     <string name="adicionar_registro_atual">Adicionar registro atual</string>
     <string name="glicemia_atual">Glicemia Atual</string>
     <string name="glicemia_passada">Glicemia Passada</string>
+    <string name="informe_o_valor_da_glicemia">Informe o valor da glicemia:</string>
+    <string name="informe_o_tipo_de_glicemia">Informe o tipo de glicemia:</string>
 </resources>
