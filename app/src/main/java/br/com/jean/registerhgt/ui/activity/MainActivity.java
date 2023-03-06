@@ -1,6 +1,8 @@
 package br.com.jean.registerhgt.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +12,13 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import br.com.jean.registerhgt.R;
+import br.com.jean.registerhgt.model.Register;
+import br.com.jean.registerhgt.ui.adapter.RegisterAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvNewRegister, tvOldRegister;
     private ExtendedFloatingActionButton fabAddRegister;
     private boolean hasClickeFab = false;
+    private RecyclerView listItems;
+    private RegisterAdapter registerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         createFindViewById();
+        configListItemsAdapter();
 
         fabAddRegister.shrink();
         fabAddRegister.setOnClickListener(v -> {
@@ -40,7 +51,18 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             hideExtendedFab();
         });
+    }
 
+    private void configListItemsAdapter() {
+        registerAdapter = new RegisterAdapter(this);
+        listItems.setLayoutManager(new LinearLayoutManager(this));
+        listItems.setAdapter(registerAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerAdapter.atualizar();
     }
 
     private void hideExtendedFab() {
@@ -67,5 +89,6 @@ public class MainActivity extends AppCompatActivity {
         fabOldRegister = findViewById(R.id.activity_main_adicionar_registro_passado);
         tvNewRegister = findViewById(R.id.activity_main_adicionar_registro_atual_texto);
         tvOldRegister = findViewById(R.id.activity_main_adicionar_registro_passado_texto);
+        listItems = findViewById(R.id.activity_main_lista_registros);
     }
 }

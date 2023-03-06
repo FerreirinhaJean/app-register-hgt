@@ -8,4 +8,5 @@
     <string name="informe_o_tipo_de_glicemia">Informe o tipo de glicemia:</string>
     <string name="salvar_registro">Salvar Registro</string>
     <string name="salvar">Salvar</string>
+    <string name="adicionar_registro_passado">Adicionar Registro Passado</string>
 </resources>
