@@ -9,4 +9,8 @@
     <string name="salvar_registro">Salvar Registro</string>
     <string name="salvar">Salvar</string>
     <string name="adicionar_registro_passado">Adicionar Registro Passado</string>
+    <string name="data_hint_old_register">06/03/2023</string>
+    <string name="quando_voc_fez_o_exame">Quando você fez o exame?</string>
+    <string name="hora_hint_old_register">11:53</string>
+    <string name="confirmar">Confirmar</string>
 </resources>

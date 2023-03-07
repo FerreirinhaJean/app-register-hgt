@@ -9,8 +9,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import br.com.jean.registerhgt.R;
 
@@ -28,26 +31,34 @@ public class OldRegisterActivity extends AppCompatActivity {
         dataRegistro = findViewById(R.id.activity_old_register_data_registro);
         horaRegistro = findViewById(R.id.activity_old_register_hora_registro);
 
+        Calendar calendar = Calendar.getInstance();
+        int yearField = calendar.get(Calendar.YEAR);
+        int monthField = calendar.get(Calendar.MONTH);
+        int dayField = calendar.get(Calendar.DAY_OF_MONTH);
+        int hourField = calendar.get(Calendar.HOUR_OF_DAY);
+        int minuteField = calendar.get(Calendar.MINUTE);
+
+
         dataRegistro.setOnClickListener(v -> {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.set(year, month, dayOfMonth);
-                    Date dateSelect = calendar.getTime();
-                    String dateFormatted = sdf.format(dateSelect);
-
-                    dataRegistro.setText(dateFormatted);
-                }, 2023, 2, 6);
+                    Calendar selectedDate = Calendar.getInstance();
+                    selectedDate.set(year, month, dayOfMonth);
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                    dataRegistro.setText(sdf.format(selectedDate.getTime()));
+                }, yearField, monthField, dayField);
                 datePickerDialog.show();
             }
         });
 
         horaRegistro.setOnClickListener(v -> {
             TimePickerDialog timePickerDialog = new TimePickerDialog(this, (view, hourOfDay, minute) -> {
-                horaRegistro.setText(hourOfDay + ":" + minute);
+                Calendar selectedTime = Calendar.getInstance();
+                selectedTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                selectedTime.set(Calendar.MINUTE, minute);
+                horaRegistro.setText(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(selectedTime.getTime()));
             },
-                    11, 55, true);
+                    hourField, minuteField, true);
             timePickerDialog.show();
         });
 

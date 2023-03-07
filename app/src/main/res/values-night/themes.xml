@@ -16,6 +16,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="actionBarTheme">@style/RegisterHgtAppBar</item>
         <!-- Customize your theme here. -->
+        <item name="colorSurface">#151515</item>
     </style>
 
     <style name="RegisterHgtAppBar" parent="Theme.AppCompat">
