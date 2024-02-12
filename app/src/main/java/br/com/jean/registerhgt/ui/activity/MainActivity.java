@@ -12,12 +12,7 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import br.com.jean.registerhgt.R;
-import br.com.jean.registerhgt.model.Register;
 import br.com.jean.registerhgt.ui.adapter.RegisterAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -68,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        registerAdapter.atualizar();
+        registerAdapter.update();
     }
 
     private void hideExtendedFab() {

@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -42,12 +43,16 @@ public class OldRegisterActivity extends AppCompatActivity {
         int hourField = calendar.get(Calendar.HOUR_OF_DAY);
         int minuteField = calendar.get(Calendar.MINUTE);
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        dataRegistro.setHint(sdf.format(new Date()));
+
+        horaRegistro.setHint(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(calendar.getTime()));
+
         dataRegistro.setOnClickListener(v -> {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
                     Calendar selectedDate = Calendar.getInstance();
                     selectedDate.set(year, month, dayOfMonth);
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                     dataRegistro.setText(sdf.format(selectedDate.getTime()));
                 }, yearField, monthField, dayField);
                 datePickerDialog.show();

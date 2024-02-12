@@ -1,5 +1,6 @@
 package br.com.jean.registerhgt.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -66,6 +67,10 @@ public class CurrentRegisterActivity extends AppCompatActivity {
 
             Register register = new Register(0, value, date, type);
             registerDao.addRegister(register);
+
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
             finish();
         }
         return super.onOptionsItemSelected(item);

@@ -48,7 +48,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
         return registers.size();
     }
 
-    public void atualizar() {
+    public void update() {
         registers.clear();
         registers.addAll(registerDao.getAll());
         notifyDataSetChanged();
