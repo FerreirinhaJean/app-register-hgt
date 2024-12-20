@@ -6,13 +6,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -30,6 +34,11 @@ public class CurrentRegisterActivity extends AppCompatActivity {
     private TextInputLayout valorGlicemia;
     private RegisterDao registerDao = new RegisterDao();
 
+    private Date dateRegister;
+    private Integer typeRegister;
+    private EditText observacoes;
+    private Button confirmar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +53,54 @@ public class CurrentRegisterActivity extends AppCompatActivity {
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         tipoGlicemia.setAdapter(adapter);
 
+        Intent intent = getIntent();
+        typeRegister = intent.getIntExtra("TYPE", 1);
+        if (typeRegister == 0) {
+            try {
+                dateRegister = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(intent.getStringExtra("DATE_TIME_OLD_REGISTER"));
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        valorGlicemia.requestFocus();
+
+        confirmar.setOnClickListener(v -> {
+            saveRegister();
+        });
+
     }
 
     private void createFindViewById() {
         tipoGlicemia = findViewById(R.id.activity_current_register_tipo_glicemia);
         valorGlicemia = findViewById(R.id.activity_current_register_valor_glicemia);
+        observacoes = findViewById(R.id.activity_current_register_et_observacoes);
+        confirmar = findViewById(R.id.activity_current_register_bt_confirmar);
+    }
+
+    private void saveRegister() {
+        String glicemia = valorGlicemia.getEditText().getText().toString();
+        if (glicemia.isEmpty()) {
+            valorGlicemia.requestFocus();
+            Toast.makeText(CurrentRegisterActivity.this, "Informe o valor da glicemia!", Toast.LENGTH_SHORT);
+            return;
+        }
+
+        int value = Integer.parseInt(glicemia);
+
+        if (typeRegister == 1)
+            dateRegister = new Date();
+
+        int type = tipoGlicemia.getSelectedItemPosition();
+        String obs = observacoes.getText().toString();
+
+        Register register = new Register(0, value, dateRegister, type, obs);
+        registerDao.addRegister(register);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -60,19 +112,9 @@ public class CurrentRegisterActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menu_current_activity_salvar) {
-            int value = Integer.parseInt(valorGlicemia.getEditText().getText().toString());
-            Date date = new Date();
-            int type = tipoGlicemia.getSelectedItemPosition();
+        if (item.getItemId() == R.id.menu_current_activity_salvar)
+            saveRegister();
 
-            Register register = new Register(0, value, date, type);
-            registerDao.addRegister(register);
-
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-        }
         return super.onOptionsItemSelected(item);
     }
 

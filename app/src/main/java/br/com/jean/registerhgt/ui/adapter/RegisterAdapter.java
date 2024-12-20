@@ -50,7 +50,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
 
     public void update() {
         registers.clear();
-        registers.addAll(registerDao.getAll());
+        registers.addAll(registerDao.getAll(true));
         notifyDataSetChanged();
     }
 

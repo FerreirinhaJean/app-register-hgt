@@ -15,12 +15,14 @@ public class Register {
     private Integer value;
     private Date date;
     private Integer type;
+    private String observacoes;
 
-    public Register(long id, int value, Date date, int type) {
+    public Register(long id, int value, Date date, int type, String observacoes) {
         this.id = id;
         this.value = value;
         this.date = date;
         this.type = type;
+        this.observacoes = observacoes;
     }
 
     public Long getId() {
@@ -53,6 +55,10 @@ public class Register {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
     }
 
     public String getFormattedValue() {

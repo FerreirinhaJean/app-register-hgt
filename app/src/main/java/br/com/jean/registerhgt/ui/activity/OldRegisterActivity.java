@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,8 +23,10 @@ import br.com.jean.registerhgt.R;
 
 public class OldRegisterActivity extends AppCompatActivity {
 
-    TextView dataRegistro, horaRegistro;
-    Button confirmar;
+    private TextView dataRegistro, horaRegistro;
+    private Button confirmar;
+
+    private final String DATE_TIME_KEY = "DATE_TIME_OLD_REGISTER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +76,12 @@ public class OldRegisterActivity extends AppCompatActivity {
         confirmar.setOnClickListener(v -> {
             if (checkFields()) {
                 Intent intent = new Intent(this, CurrentRegisterActivity.class);
+                intent.putExtra("TYPE", 0);
+                intent.putExtra(DATE_TIME_KEY, dataRegistro.getText().toString() +
+                        " " +
+                        horaRegistro.getText().toString());
+
                 startActivity(intent);
-//                finish();
             }
         });
     }
